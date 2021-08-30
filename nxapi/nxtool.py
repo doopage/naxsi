@@ -165,7 +165,7 @@ es_version =  es.info()['version'].get('number', None)
 if es_version is not None:
     cfg.cfg["elastic"]["version"] = es_version.split(".")[0]
 if cfg.cfg["elastic"].get("version", None) is None:
-    logging.critical("Failed to get version from ES, Specify version ['1'/'2'/'5'] in [elasticsearch] section")
+    logging.critical("Failed to get version from ES, Specify version ['1'/'2'/'5'/'6'] in [elasticsearch] section")
     sys.exit(-1)
 
 translate = NxTranslate(es, cfg)
