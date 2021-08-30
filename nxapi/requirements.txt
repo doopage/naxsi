@@ -1,2 +1,2 @@
-elasticsearch==5.5.3
+elasticsearch>=6.0.0,<7.0.0
 GeoIP
