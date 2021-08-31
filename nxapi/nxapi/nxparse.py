@@ -416,7 +416,7 @@ class ESInject(NxInjector):
                     ignore=400 # Ignore 400 cause by IndexAlreadyExistsException when creating an index
                 )
             except Exception as idxadd_error:
-                print "Unable to create the index/collection for ES 5.X: "+self.cfg["elastic"]["index"]+" "+self.cfg["elastic"]["doctype"]+ ", Error: " + str(idxadd_error)
+                print "Unable to create the index/collection for ES 5/6.X: "+self.cfg["elastic"]["index"]+" "+self.cfg["elastic"]["doctype"]+ ", Error: " + str(idxadd_error)
             try:
                 self.es.indices.put_mapping(
                     index=self.cfg["elastic"]["index"],
@@ -441,7 +441,7 @@ class ESInject(NxInjector):
                         }
                 })
             except Exception as mapset_error:
-                print "Unable to set mapping on index/collection for ES 5.X: "+self.cfg["elastic"]["index"]+" "+self.cfg["elastic"]["doctype"]+", Error: "+str(mapset_error)
+                print "Unable to set mapping on index/collection for ES 5/6.X: "+self.cfg["elastic"]["index"]+" "+self.cfg["elastic"]["doctype"]+", Error: "+str(mapset_error)
                 return
         else:
             try:
