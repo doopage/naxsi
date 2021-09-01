@@ -211,7 +211,7 @@ class NxTranslate():
                 for file in files:
                     if file.endswith(".tpl"):
                         output.append("#\n#{0}{1}/{2} ".format(
-                            self.grn.format("Template :"),
+                            self.grn.format("Template: "),
                             root,
                             file
                         ))
