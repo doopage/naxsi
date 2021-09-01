@@ -219,7 +219,6 @@ class NxTranslate():
                         scoring.refresh_scope('template', self.tpl2esq(template))
                         output.append("# Num of hits: {0}".format(scoring.get('template', 'total')))
                         if scoring.get('template', 'total') > 0:
-                            output.append('{0}'.format(self.grn.format("#  template matched, generating all rules.")))
                             whitelists = self.gen_wl(template, rule={})
                             # x add here
                             output.append('# Num of whitelists: {0}'.format(len(whitelists)))
