@@ -26,9 +26,10 @@ F_SETPIPE_SZ = 1031  # Linux 2.6.35+
 F_GETPIPE_SZ = 1032  # Linux 2.6.35+
 
 # Initialize logging
-logging.basicConfig(stream=sys.stdout, level=logging.INFO,
+logging.basicConfig(stream=sys.stderr, level=logging.INFO,
                     format=None,
                     datefmt=None)
+logging.getLogger('elasticsearch').setLevel(logging.ERROR)
 
 def open_fifo(fifo):
     try:
@@ -182,7 +183,7 @@ if options.full_auto is True:
     results = translate.full_auto()
     if results:
         for result in results:
-            logging.info("{0}".format(result))
+            print(result)
     else:
         logging.critical("No hits for this filter.")
         sys.exit(1)
