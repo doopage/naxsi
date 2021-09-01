@@ -210,19 +210,19 @@ class NxTranslate():
             for root, dirs, files in os.walk(sdir):
                 for file in files:
                     if file.endswith(".tpl"):
-                        output.append("# {0}{1}/{2} ".format(
-                            self.grn.format(" template :"),
+                        output.append("#\n#{0}{1}/{2} ".format(
+                            self.grn.format("Template :"),
                             root,
                             file
                         ))
                         template = self.load_tpl_file(root+"/"+file)
                         scoring.refresh_scope('template', self.tpl2esq(template))
-                        output.append("Nb of hits : {0}".format(scoring.get('template', 'total')))
+                        output.append("# Num of hits: {0}".format(scoring.get('template', 'total')))
                         if scoring.get('template', 'total') > 0:
                             output.append('{0}'.format(self.grn.format("#  template matched, generating all rules.")))
                             whitelists = self.gen_wl(template, rule={})
                             # x add here
-                            output.append('{0}'.format(len(whitelists))+" whitelists ...")
+                            output.append('# Num of whitelists: {0}'.format(len(whitelists)))
                             for genrule in whitelists:
                                 scoring.refresh_scope('rule', genrule['rule'])
                                 results = scoring.check_rule_score(template)
